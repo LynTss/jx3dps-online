@@ -2,12 +2,10 @@ import { 属性简写枚举 } from '@/@types/枚举'
 import { 角色基础属性类型 } from '@/@types/角色'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 
-export const 获取当前各属性最大附魔 = (心法?) => {
+export const 获取当前各属性最大附魔 = (心法?, 计算全能?) => {
   const { 附魔 } = 获取当前数据(心法)
   const res = {}
   附魔?.forEach((item) => {
-    // const 部位表单key = `${EquipmentCharacterPositionEnum[key]}${key}`
-    // const 附魔类型 = item?.附魔名称?.split('+')?.[0]
     const 附魔属性 = item?.增益集合?.[0]?.属性 || ''
     const 附魔数值 = item?.增益集合?.[0]?.值 || 0
     const 附魔简写 = 属性简写枚举[附魔属性]
@@ -15,7 +13,7 @@ export const 获取当前各属性最大附魔 = (心法?) => {
       res[附魔简写] = 附魔数值
     }
   })
-  return Object.keys(res)
+  const resList = Object.keys(res)
     .filter((item) => !['加速', '体质']?.includes(item))
     .map((key) => {
       return {
@@ -23,6 +21,15 @@ export const 获取当前各属性最大附魔 = (心法?) => {
         值: res[key],
       }
     })
+
+  if (计算全能) {
+    const 找到破招的数据 = resList?.find((item) => item?.收益 === '破招')?.值
+    resList.push({
+      收益: '全能',
+      值: 找到破招的数据 / 2,
+    })
+  }
+  return resList
 }
 
 export const 获取单点属性收益列表 = (心法?) => {

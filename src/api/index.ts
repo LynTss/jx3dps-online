@@ -25,7 +25,7 @@ const jx3AppApi = axios.create({
 })
 
 const yeApi = axios.create({
-  baseURL: 'https://inv.btcsg.top:3001', // 设置 baseURL 为您的服务器地址
+  baseURL: 'https://jx3api.btcsg.top', // 设置 baseURL 为您的服务器地址
   timeout: 10000, // 设置超时时间
   headers: {
     'Content-Type': 'application/json',
