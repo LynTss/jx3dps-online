@@ -253,6 +253,8 @@ const 识别装备对比: React.FC<ModalProps> = () => {
     return 更新后秒伤 - 当前计算结果?.秒伤
   }, [组合计算装备, 当前计算结果, 角色默认基础属性, 装备信息])
 
+  console.log('sortMatchList', sortMatchList)
+
   return (
     <>
       <div className={'wufeng-modal'}>
@@ -405,7 +407,15 @@ const 识别装备对比: React.FC<ModalProps> = () => {
                 ),
                 width: 130,
                 dataIndex: 'dpsPrice',
-                sorter: (a: any, b: any) => b.dpsPrice - a.dpsPrice,
+                sorter: (a: any, b: any) => {
+                  if (b.dpsPrice !== '-' && a.dpsPrice !== '-') {
+                    return Number(b.dpsPrice) - Number(a.dpsPrice)
+                  } else if (b.dpsPrice !== '-' && a.dpsPrice === '-') {
+                    return 1
+                  } else {
+                    return -999
+                  }
+                },
                 render: (v) => {
                   return (
                     <span
