@@ -1,8 +1,8 @@
 import { Alert, Button, message, Modal, ModalProps, Spin } from 'antd'
 import ServerCascader from '@/组件/ServerCascader'
 import { useEffect, useState } from 'react'
-import { getEquipPriceList } from '@/api'
-// import demo from './demo.json'
+// import { getEquipPriceList } from '@/api'
+import demo from './demo.json'
 import './index.css'
 
 interface 导入交易行价格弹窗类型 extends ModalProps {
@@ -30,17 +30,23 @@ const 导入交易行价格弹窗: React.FC<导入交易行价格弹窗类型> =
     setLoading(true)
     // const res = demo
     try {
-      // const res = demo
-      const res = await getEquipPriceList({
-        itemIds: 展示装备数据列表
-          ?.map((item) => `${装备位置映射[item?.装备部位]}_${item?.id}`)
-          ?.join(','),
-        server: server?.[1],
-      })
+      const res = demo
+      // const res = await getEquipPriceList({
+      //   itemIds: 展示装备数据列表
+      //     ?.map((item) => `${装备位置映射[item?.装备部位]}_${item?.id}`)
+      //     ?.join(','),
+      //   server: server?.[1],
+      // })
 
       const resData = 展示装备数据列表
         .map((item) => {
           const 价格数据 = res?.data?.[`${装备位置映射[item?.装备部位]}_${item?.id}`] || undefined
+          console.log(
+            '`${装备位置映射[item?.装备部位]}_${item?.id}`',
+            `${装备位置映射[item?.装备部位]}_${item?.id}`
+          )
+          console.log('装备位置映射', 装备位置映射)
+          console.log('价格数据', 价格数据)
           return {
             ...item,
             价格数据,
