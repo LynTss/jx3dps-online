@@ -101,26 +101,21 @@ function 属性置换收益() {
   // 根据数值判断
   const 获取样式函数 = (显示结果?: 置换结果数据类型) => {
     if (!显示结果) {
-      return ''
-    } else if (显示结果?.收益 === 置换数据信息?.最大值) {
-      return 'attr-value-max'
-    } else if (显示结果?.收益 === 置换数据信息?.最小值) {
-      return 'attr-value-min'
-    } else if (显示结果?.收益 > 0) {
+      return {}
+    } 
+    const 亮度最大值 = 45
+    const 亮度最小值 = 15
+    if (显示结果.收益 > 0) {
       // 获取三个等级的数值
-      const 一级数据 = 置换数据信息?.最大值 / 2
-      if (显示结果?.收益 < 一级数据) {
-        return 'attr-value-up-1'
-      } else {
-        return 'attr-value-up-2'
+      const 亮度 = 亮度最大值 - (显示结果?.收益 / 置换数据信息?.最大值) * (亮度最大值 - 亮度最小值)
+      return {
+        backgroundColor: `hsl(140 60% ${亮度}% / 1)`
       }
+      
     } else if (显示结果?.收益 < 0) {
-      // 获取三个等级的数值
-      const 一级数据 = 置换数据信息?.最小值 / 2
-      if (显示结果?.收益 > 一级数据) {
-        return 'attr-value-low-1'
-      } else {
-        return 'attr-value-low-2'
+      const 亮度 = 亮度最大值 - (显示结果?.收益 / 置换数据信息?.最小值) * (亮度最大值 - 亮度最小值)
+      return {
+        backgroundColor: `hsl(0 60% ${亮度}% / 0.8)`
       }
     }
   }
@@ -165,7 +160,7 @@ function 属性置换收益() {
                     {显示结果?.收益 && 显示结果?.收益 > 0 ? '+' : ''}
                     {显示结果?.收益 || '-'}
                   </div>
-                  <div className={`attr-replace-res-bg ${样式函数}`} />
+                  <div className={`attr-replace-res-bg ${样式函数}`} style={样式函数} />
                 </Col>
               )
             })}
