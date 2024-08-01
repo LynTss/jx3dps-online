@@ -1,0 +1,23 @@
+
+.equip-modal .ant-modal-header {
+  padding: 0;
+}
+
+.equip-modal {
+  position: relative;
+}
+
+.equip-modal-tabs {
+  margin-top: -12px;
+}
+
+.equip-modal-old-dps {
+  position: absolute;
+  top: 12px;
+  left: 400px;
+  line-height: 16px;
+  font-weight: 500;
+  font-size: 16px;
+  pointer-events: unset;
+  border-radius: 4px;;
+}

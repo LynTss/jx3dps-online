@@ -1,5 +1,12 @@
 .attr-replace {
-  padding-top: 24px;
+  /* padding-top: 24px; */
+}
+
+.attr-replace-btns {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .attr-replace .ant-col {
@@ -21,6 +28,13 @@
 .attr-replace-sider {
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   height: calc((100vh - 450px) / 7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.attr-replace-header-item {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,19 +87,15 @@
   z-index: 0;
 }
 
-.attr-replace-item {
-  padding: 4px 0;
-}
-
 
 .attr-value-up-1 {
-  background-color: #3e8e47;
-  /* background-color: hsl(140, 60%, 45%); */
+  /* background-color: #3e8e47; */
+  background-color: hsl(140, 60%, 40%);
 }
 
 .attr-value-up-2 {
-  background-color: #22663a;
-  /* background-color: hsl(140, 40%, 30%); */
+  /* background-color: #22663a; */
+  background-color: hsl(140, 60%, 30%);
 }
 
 
@@ -97,14 +107,59 @@
 
 
 .attr-value-low-1 {
-  background-color: hsl(0 60% 55% / 1);
+  background-color: hsl(0 60% 55% / 0.9);
 }
 
 .attr-value-low-2 {
-  background-color: hsl(0 75% 40% / 1);
+  background-color: hsl(0 75% 40% / 0.9);
 }
 
 .attr-value-min {
-  background-color: hsl(0 60% 15% / 1);;
+  background-color: hsl(0 60% 15% / 0.9);;
   font-weight: 700;
+}
+
+.attr-repace-icon {
+  color: #ffbc12;
+  font-size: 14px;
+}
+
+.attr-repace-item-icon {
+  position: absolute;
+  z-index: 3;
+  left: 4px;
+  top: 4px;
+}
+
+.attr-replace-tip-item {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.attr-replace-tip-item + .attr-replace-tip-item {
+  margin-top: 4px;
+}
+
+.attr-replace-tip-label {
+  font-size: 14px;
+  margin-right: 4px;
+  font-weight: 400;
+  color: #666;
+}
+
+.attr-replace-tip-label-up {
+  font-weight: 500;
+  color: #333;
+}
+
+.attr-replace-tip-num {
+  color: #F34242;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.attr-replace-tip-num-up {
+  color: #2AC88F;
+  font-weight: 500;
 }

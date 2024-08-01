@@ -1,6 +1,5 @@
 import {
   Button,
-  Modal,
   ModalProps,
   Spin,
   message,
@@ -44,7 +43,7 @@ const 门派套装牌子枚举 = {
   鞋子: '鞋',
 }
 
-const Ocr识别装备对比: React.FC<ModalProps> = (props) => {
+const 识别装备对比: React.FC<ModalProps> = () => {
   const [loading, setLoading] = useState(false)
   const [dpsLoading, setDpsLoading] = useState(false)
   const [initEd, setInitEd] = useState(false)
@@ -61,14 +60,13 @@ const Ocr识别装备对比: React.FC<ModalProps> = (props) => {
   const 装备信息 = useAppSelector((state) => state?.data?.装备信息)
 
   useEffect(() => {
-    if (props.open) {
-      if (!initEd) {
-        initEquip()
-      }
-    } else {
+    if (!initEd) {
+      initEquip()
+    }
+    return () => {
       reset()
     }
-  }, [props.open, initEd])
+  }, [initEd])
 
   const reset = () => {
     setLoading(false)
@@ -232,74 +230,64 @@ const Ocr识别装备对比: React.FC<ModalProps> = (props) => {
   }, [matchList, dpsDiffMap])
 
   return (
-    <Modal
-      className={'ocr-modal'}
-      width={1024}
-      maskClosable={false}
-      title={
-        <div className={'ocr-modal-header'}>
-          <h1 className={'ocr-modal-title'}>
-            识别装备对比
-            <Popover
-              title='使用须知'
-              content={
-                <div>
-                  <h1 className={'ocr-modal-tip-title'}>使用注意</h1>
-                  <p>在使用前请在配装器内提前录入您的配装，以便于后续的对比</p>
-                  <p>
-                    您可以打本时后台同步开启本网页弹窗。在打本结束后复制掉落列表，切换到本网页进行粘贴，以进行快速识别
-                  </p>
-                  <p>
-                    该功能本质上是配装器内的智能对比功能，仅作为快速识别掉落列表中多个装备的情况使用
-                    <span style={{ color: '#F34242' }}>仅供娱乐</span>
-                  </p>
-                  <h1 className={'ocr-modal-tip-title'}>如何获取掉落列表</h1>
-                  <p>1、在掉落列表左上角的菜单中点击“贴出所有物品”</p>
-                  <p>2、在团队中复制发送的掉落列表，到浏览器粘贴</p>
-                  <p>3、由于是插件自动发到团队的，可能会有点显眼包</p>
-                  <Divider style={{ margin: '8px 0' }} />
-                  <p>
-                    如果你不想太显眼包，你也可以 按住 「Ctrl」 +
-                    左键依次在掉落列表中点击你的装备，使它出现在聊天输入框内
-                  </p>
-                  <p style={{ marginBottom: 8 }}>
-                    然后 使用 「Ctrl」+「A」全选，「Ctrl」+「X」剪切，然后到浏览器内粘贴
-                  </p>
-                  <div className={'ocr-modal-tip-image-wrap'}>
-                    <Image className={'ocr-modal-tip-image'} src={教程_1} />
-                    <Image className={'ocr-modal-tip-image'} src={教程_2} />
-                    <Image className={'ocr-modal-tip-image'} src={教程_3} />
-                  </div>
+    <div className={'ocr-modal'}>
+      <div className={'ocr-modal-header'}>
+        <h1 className={'ocr-modal-title'}>
+          <Popover
+            title='使用须知'
+            content={
+              <div>
+                <h1 className={'ocr-modal-tip-title'}>使用注意</h1>
+                <p>在使用前请在配装器内提前录入您的配装，以便于后续的对比</p>
+                <p>
+                  您可以打本时后台同步开启本网页弹窗。在打本结束后复制掉落列表，切换到本网页进行粘贴，以进行快速识别
+                </p>
+                <p>
+                  该功能本质上是配装器内的智能对比功能，仅作为快速识别掉落列表中多个装备的情况使用
+                  <span style={{ color: '#F34242' }}>仅供娱乐</span>
+                </p>
+                <h1 className={'ocr-modal-tip-title'}>如何获取掉落列表</h1>
+                <p>1、在掉落列表左上角的菜单中点击“贴出所有物品”</p>
+                <p>2、在团队中复制发送的掉落列表，到浏览器粘贴</p>
+                <p>3、由于是插件自动发到团队的，可能会有点显眼包</p>
+                <Divider style={{ margin: '8px 0' }} />
+                <p>
+                  如果你不想太显眼包，你也可以 按住 「Ctrl」 +
+                  左键依次在掉落列表中点击你的装备，使它出现在聊天输入框内
+                </p>
+                <p style={{ marginBottom: 8 }}>
+                  然后 使用 「Ctrl」+「A」全选，「Ctrl」+「X」剪切，然后到浏览器内粘贴
+                </p>
+                <div className={'ocr-modal-tip-image-wrap'}>
+                  <Image className={'ocr-modal-tip-image'} src={教程_1} />
+                  <Image className={'ocr-modal-tip-image'} src={教程_2} />
+                  <Image className={'ocr-modal-tip-image'} src={教程_3} />
                 </div>
-              }
+              </div>
+            }
+          >
+            <span className={'ocr-modal-tip-text'}>
+              使用须知
+              <QuestionCircleOutlined className={'ocr-modal-tip-icon'} />
+            </span>
+          </Popover>
+        </h1>
+        <div className={'ocr-modal-header-operates'}>
+          <Checkbox checked={autoAction} onChange={(e) => setAutoAction(e?.target?.checked)}>
+            输入后自动计算
+          </Checkbox>
+          {!autoAction ? (
+            <Button
+              loading={loading}
+              type='primary'
+              onClick={() => handleGetEquip(inputVal)}
+              style={{ marginLeft: 12 }}
             >
-              <span className={'ocr-modal-tip-text'}>
-                使用须知
-                <QuestionCircleOutlined className={'ocr-modal-tip-icon'} />
-              </span>
-            </Popover>
-          </h1>
-          <div className={'ocr-modal-header-operates'}>
-            <Checkbox checked={autoAction} onChange={(e) => setAutoAction(e?.target?.checked)}>
-              输入后自动计算
-            </Checkbox>
-            {!autoAction ? (
-              <Button
-                loading={loading}
-                type='primary'
-                onClick={() => handleGetEquip(inputVal)}
-                style={{ marginLeft: 12 }}
-              >
-                开始解析
-              </Button>
-            ) : null}
-          </div>
+              开始解析
+            </Button>
+          ) : null}
         </div>
-      }
-      centered
-      {...props}
-      footer={false}
-    >
+      </div>
       <Spin
         spinning={loading || dpsLoading}
         className={'ocr-spnning'}
@@ -411,8 +399,8 @@ const Ocr识别装备对比: React.FC<ModalProps> = (props) => {
           />
         ) : null}
       </Spin>
-    </Modal>
+    </div>
   )
 }
 
-export default React.memo(Ocr识别装备对比)
+export default React.memo(识别装备对比)
