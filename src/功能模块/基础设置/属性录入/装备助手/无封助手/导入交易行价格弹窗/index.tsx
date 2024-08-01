@@ -2,7 +2,6 @@ import { Alert, Button, message, Modal, ModalProps, Spin } from 'antd'
 import ServerCascader from '@/组件/ServerCascader'
 import { useEffect, useState } from 'react'
 import { getEquipPriceList } from '@/api'
-// import demo from './demo.json'
 import './index.css'
 
 interface 导入交易行价格弹窗类型 extends ModalProps {
@@ -38,17 +37,10 @@ const 导入交易行价格弹窗: React.FC<导入交易行价格弹窗类型> =
         server: server?.[1],
       })
 
-      console.log('res', res)
-
       const resData = 展示装备数据列表
         .map((item) => {
-          const 价格数据 = res?.data?.[`${装备位置映射[item?.装备部位]}_${item?.id}`] || undefined
-          console.log(
-            '`${装备位置映射[item?.装备部位]}_${item?.id}`',
-            `${装备位置映射[item?.装备部位]}_${item?.id}`
-          )
-          console.log('装备位置映射', 装备位置映射)
-          console.log('价格数据', 价格数据)
+          const 价格数据 =
+            res?.data?.data?.[`${装备位置映射[item?.装备部位]}_${item?.id}`] || undefined
           return {
             ...item,
             价格数据,
@@ -56,16 +48,13 @@ const 导入交易行价格弹窗: React.FC<导入交易行价格弹窗类型> =
         })
         .filter((item) => item?.价格数据)
 
-      console.log('resData', resData)
-
-      if (!res?.data) {
+      if (!resData?.length) {
         message.error('获取价格错误')
       }
 
       setLoading(false)
       更新结果数据(resData)
       // const 成功条数 = Object.keys(res?.data)?.length
-      console.log('展示装备数据列表', 展示装备数据列表)
       更新结果总结({
         成功: resData?.length,
         失败: 展示装备数据列表.length - resData?.length,
@@ -93,7 +82,7 @@ const 导入交易行价格弹窗: React.FC<导入交易行价格弹窗类型> =
     >
       <Spin spinning={loading}>
         <div className={'wufeng-daoru-wrap'}>
-          <Alert message='获取该服务器交易行昨日价格，和商人价格有出入，仅供参考。' />
+          <Alert message='获取该服务器交易行昨日最低价，和商人价格有出入，仅供参考。' />
           <div className={'wufeng-daoru-form-content'}>
             <ServerCascader
               className={'wufeng-daoru-form-item'}
