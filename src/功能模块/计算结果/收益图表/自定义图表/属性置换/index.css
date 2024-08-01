@@ -14,12 +14,13 @@
 .attr-replace-name {
   font-size: 14px;
   margin-bottom: 0px;
-  line-height: 20px;
+  line-height: 16px;
   text-align: center;
 }
 
 .attr-replace-sider {
   border-left: 1px solid rgba(255, 255, 255, 0.5);
+  height: calc((100vh - 450px) / 7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,7 +79,7 @@
 
 
 .attr-value-up-1 {
-  background-color: #3e8e46;
+  background-color: #3e8e47;
   /* background-color: hsl(140, 60%, 45%); */
 }
 
@@ -90,6 +91,7 @@
 
 .attr-value-max {
   background-color: hsl(140 60% 12% / 1);
+  border: 2px solid rgba(255,255,255,0.9);
   font-weight: 700;
 }
 
