@@ -1,6 +1,6 @@
 import { Alert, Button, message, Modal, ModalProps, Spin } from 'antd'
 import ServerCascader from '@/组件/ServerCascader'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getEquipPriceList } from '@/api'
 // import demo from './demo.json'
 import './index.css'
@@ -17,34 +17,55 @@ const 导入交易行价格弹窗: React.FC<导入交易行价格弹窗类型> =
   const [结果总结, 更新结果总结] = useState({ 成功: 0, 失败: 0 })
   const [loading, setLoading] = useState<boolean>(false)
 
+  useEffect(() => {
+    if (!props.open) {
+      更新结果数据([])
+      setLoading(false)
+      更新结果总结({ 成功: 0, 失败: 0 })
+      changeServer(undefined)
+    }
+  }, [props.open])
+
   const 查询交易行数据 = async () => {
     setLoading(true)
     // const res = demo
-    const res = await getEquipPriceList({
-      itemIds: 展示装备数据列表
-        ?.map((item) => `${装备位置映射[item?.装备部位]}_${item?.id}`)
-        ?.join(','),
-      server: server?.[1],
-    })
+    try {
+      // const res = demo
+      const res = await getEquipPriceList({
+        itemIds: 展示装备数据列表
+          ?.map((item) => `${装备位置映射[item?.装备部位]}_${item?.id}`)
+          ?.join(','),
+        server: server?.[1],
+      })
 
-    const resData = 展示装备数据列表.map((item) => {
-      const 价格数据 = res?.data?.[`${装备位置映射[item?.装备部位]}_${item?.id}`] || undefined
-      return {
-        ...item,
-        价格数据,
+      const resData = 展示装备数据列表
+        .map((item) => {
+          const 价格数据 = res?.data?.[`${装备位置映射[item?.装备部位]}_${item?.id}`] || undefined
+          return {
+            ...item,
+            价格数据,
+          }
+        })
+        .filter((item) => item?.价格数据)
+
+      console.log('resData', resData)
+
+      if (!res?.data) {
+        message.error('获取价格错误')
       }
-    })
-    if (!res?.data) {
-      message.error('获取价格错误')
-    }
 
-    setLoading(false)
-    更新结果数据(resData)
-    const 成功条数 = Object.keys(res?.data)?.length
-    更新结果总结({
-      成功: 成功条数,
-      失败: 展示装备数据列表.length - 成功条数,
-    })
+      setLoading(false)
+      更新结果数据(resData)
+      // const 成功条数 = Object.keys(res?.data)?.length
+      console.log('展示装备数据列表', 展示装备数据列表)
+      更新结果总结({
+        成功: resData?.length,
+        失败: 展示装备数据列表.length - resData?.length,
+      })
+    } catch (e) {
+      message.error('获取价格错误')
+      setLoading(false)
+    }
   }
 
   const 导入 = () => {
