@@ -128,10 +128,14 @@ const 识别装备对比: React.FC<ModalProps> = () => {
         }
       })
 
+      const { 大附魔_伤帽, 大附魔_伤衣, 大附魔_伤腰, 大附魔_伤腕, 大附魔_伤鞋 } =
+        装备信息?.装备增益 || {}
+
       const 更新后装备信息 = 根据装备信息获取基础属性({
         ...装备信息,
         装备基础属性: { ...角色默认基础属性 },
         装备列表: 新装备列表,
+        装备增益: { 大附魔_伤帽, 大附魔_伤衣, 大附魔_伤腰, 大附魔_伤腕, 大附魔_伤鞋 },
       })
 
       const { 秒伤: 更新后秒伤 } = dispatch(秒伤计算({ 更新装备信息: 更新后装备信息 }))
@@ -243,23 +247,26 @@ const 识别装备对比: React.FC<ModalProps> = () => {
         }
       })
     })
+    const { 大附魔_伤帽, 大附魔_伤衣, 大附魔_伤腰, 大附魔_伤腕, 大附魔_伤鞋 } =
+      装备信息?.装备增益 || {}
+
     const 更新后装备信息 = 根据装备信息获取基础属性({
       ...装备信息,
       装备基础属性: { ...角色默认基础属性 },
       装备列表: 新装备列表,
+      装备增益: { 大附魔_伤帽, 大附魔_伤衣, 大附魔_伤腰, 大附魔_伤腕, 大附魔_伤鞋 },
     })
 
     const { 秒伤: 更新后秒伤 } = dispatch(秒伤计算({ 更新装备信息: 更新后装备信息 }))
     return 更新后秒伤 - 当前计算结果?.秒伤
   }, [组合计算装备, 当前计算结果, 角色默认基础属性, 装备信息])
 
-  console.log('sortMatchList', sortMatchList)
-
   return (
     <>
       <div className={'wufeng-modal'}>
         <div className={'wufeng-modal-header'}>
           <Alert
+            className={'wufeng-modal-alert'}
             type='warning'
             message={
               <div>
@@ -516,8 +523,8 @@ const 部位颜色映射 = {
   帽子: 'magenta',
   护腕: 'red',
   下装: 'volcano',
-  鞋子: 'orange',
+  鞋子: 'green',
   项链: 'blue',
-  腰坠: 'lime',
+  腰坠: 'purple',
   暗器: 'cyan',
 }

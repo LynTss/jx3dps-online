@@ -9,6 +9,11 @@
   margin-bottom: 16px;
 }
 
+.wufeng-modal-alert {
+  flex: 1;
+  margin-right: 24px;
+}
+
 .wufeng-image-wrap {
   text-align: center;
 }
