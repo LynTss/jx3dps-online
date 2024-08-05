@@ -25,3 +25,7 @@
 .cycle-select-item-tag-green {
   color: #2AC88F;
 }
+
+.cycle-select-popover-content {
+  max-width: 300px
+}

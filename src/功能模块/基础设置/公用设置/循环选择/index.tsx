@@ -46,17 +46,20 @@ function 循环选择() {
                   <Popover
                     placement='right'
                     zIndex={2000}
-                    title='计算循环说明'
+                    title='说明'
                     open={item.提供者 ? undefined : false}
                     content={
                       item.提供者 ? (
-                        <div>
+                        <div className='cycle-select-popover-content'>
                           {item.提供者 !== '模拟' ? (
-                            <p>
-                              该循环计算数据JCL由
-                              <span className='cycle-select-provider'>{item.提供者}</span>
-                              提供
-                            </p>
+                            <>
+                              <p>
+                                该循环计算数据JCL由
+                                <span className='cycle-select-provider'> {item.提供者} </span>
+                                提供
+                              </p>
+                              <p>{item?.备注}</p>
+                            </>
                           ) : (
                             <p>
                               该循环计算数据由
