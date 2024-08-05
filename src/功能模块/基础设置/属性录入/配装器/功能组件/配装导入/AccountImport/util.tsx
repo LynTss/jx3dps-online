@@ -22,7 +22,6 @@ export const getEquipData = (data) => {
       if (
         附魔数据 &&
         ![
-          'atVitalityBase',
           'atDecriticalDamageBase',
           'atDecriticalDamagePowerBase',
           // 'atDamageToLifeForSelf',

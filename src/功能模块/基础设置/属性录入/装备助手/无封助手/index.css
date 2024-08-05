@@ -1,32 +1,19 @@
-.ocr-modal-header {
+.wufeng-modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   /* padding: 12px 48px 12px 24px; */
-  padding-right: 24px;
-  margin-top: -8px;
-  height: 32px;
+  padding-right: 0px;
+  /* margin-top: -8px; */
+  /* height: 32px; */
   margin-bottom: 16px;
 }
 
-.ocr-modal-tip-title {
-  margin-bottom: 12px;
-  margin-top: 12px;
-  font-size: 14px;
-}
-
-.ocr-modal-title {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 16px;
-  margin: 0;
-}
-
-.ocr-image-wrap {
+.wufeng-image-wrap {
   text-align: center;
 }
 
-.ocr-preview-img {
+.wufeng-preview-img {
   display: block;
   /* max-width: calc(100vw - 48px - 48px); */
   /* max-height: calc(100vh - 57px - 48px - 48px - 40px - 12px); */
@@ -37,26 +24,26 @@
 }
 
 
-.ocr-modal .ant-modal-header {
+.wufeng-modal .ant-modal-header {
   padding: 0;
 }
 
-.ocr-modal .ant-upload-list{
+.wufeng-modal .ant-upload-list{
   display: none;
 }
 
-.ocr-modal .ocr-upload-dragger {
+.wufeng-modal .wufeng-upload-dragger {
   height: 40vh;
 }
 
-.ocr-modal-tip-text {
+.wufeng-modal-tip-text {
   color: #F34242;
   margin-left: 12px;
   cursor: pointer;
   font-weight: 400;
 }
 
-.ocr-modal-tip-icon {
+.wufeng-modal-tip-icon {
   margin-left: 4px;
   font-size: 14px;
   vertical-align: -1px;
@@ -64,33 +51,33 @@
 
 
 /* 灰度化有助于提高OCR识别准确度 */
-/* img.ocr-preprocess { */
+/* img.wufeng-preprocess { */
 /* } */
 
 /* 去除噪声 */
-/* img.ocr-preprocess {
+/* img.wufeng-preprocess {
   filter: blur(0px) grayscale(100%);
 } */
 
 /* 调整文字的颜色以提高对比度 */
-/* .ocr-text-color { */
+/* .wufeng-text-color { */
   /* color: rgb(200, 200, 200); */
   /* 中等亮度的灰色 */
 /* } */
 
-.ocr-res-wrap {
+.wufeng-res-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.ocr-res-img {
+.wufeng-res-img {
   max-width: calc(100% - 600px);
   max-height: calc(100vh - 57px - 48px - 48px - 200px);
   margin-right: 24px;
 }
 
-.ocr-form {
+.wufeng-form {
   width: 600px;
   display: flex;
   justify-content: center;
@@ -99,48 +86,48 @@
   padding-left: 12px;
 }
 
-.ocr-match-item {
+.wufeng-match-item {
   display: flex;
   align-items: center;
   margin: 0 auto;
 }
 
-.ocr-match-item.ocr-match-up-item .ant-input{
+.wufeng-match-item.wufeng-match-up-item .ant-input{
   border-color: #2AC88F;
   color: #2AC88F;
   font-weight: 500;
 }
 
-.ocr-match-item + .ocr-match-item {
+.wufeng-match-item + .wufeng-match-item {
   margin-top: 8px;
 }
 
-.ocr-match-item .ant-form-item {
+.wufeng-match-item .ant-form-item {
   width: 500px;
   margin: 0;
   margin-right: 24px;
 }
 
-.ocr-diff-dps-res-number {
+.wufeng-diff-dps-res-number {
   font-size: 16px;
   font-weight: 400;
 }
 
-.ocr-diff-dps-res-down {
+.wufeng-diff-dps-res-down {
   color: #F34242;
 }
 
-.ocr-diff-dps-res-up {
+.wufeng-diff-dps-res-up {
   color: #0ab559;
   font-weight: 500;
 }
 
-.ocr-spnning {
+.wufeng-spnning {
   font-size: 16px;
   font-weight: 500;
 }
 
-.ocr-upload-text-area {
+.wufeng-upload-text-area {
   height: 100px;
   margin-bottom: 16px;
 }
@@ -154,19 +141,61 @@
   color: #F34242;
 }
 
-.dps-price-input-width {
-  width: 260px;
+.wufeng-dps-price-input-width {
+  width: 170px;
 }
 
 .dps-price-table {
-  height: 520px;
+  /* height: 520px; */
 }
 
-.ocr-modal-tip-image-wrap .ant-image {
+.wufeng-modal-tip-image-wrap .ant-image {
   margin-right: 12px;
   max-width: 300px;
 }
 
-.ocr-modal-tip-image {
+.wufeng-modal-tip-image-wrap .wufeng-modal-tip-image {
   height: 100px;
+}
+
+.wufeng-equip-name {
+  display: inline-block;
+  width: 65px;
+  font-weight: 500;
+}
+
+.dps-diff-zhuangbei-select-shuoming > span + span { 
+  margin-left: 4px;
+}
+
+.dps-diff-zhuangbei-select-shuoming {
+  color: #666;
+}
+
+.wufeng-equip-info {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.wufeng-modal-footer {
+  /* position: absolute; */
+  margin-top: -48px;
+}
+
+.wufeng-group-dps-res {
+  border-radius: 4px;
+  border: 1px solid var(--ant-primary-color);
+  padding: 12px 16px;
+  margin-top: 12px;
+}
+
+.wufeng-group-dps-res-num {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.wufeng-group-dps-res-equips {
+  margin-top: 8px;
 }

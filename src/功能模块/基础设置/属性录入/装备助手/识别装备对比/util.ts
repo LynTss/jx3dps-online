@@ -40,7 +40,3 @@ export function isOnlyOneCharDifferent(str1, str2) {
 }
 
 // 测试
-// console.log(isOnlyOneCharDifferent('abcde', 'abxde')) // true
-// console.log(isOnlyOneCharDifferent('abcde', 'abxdee')) // false
-// console.log(isOnlyOneCharDifferent('abcde', 'abcde')) // false
-// console.log(isOnlyOneCharDifferent('world', 'wrld')) // true

@@ -22,7 +22,7 @@ export const getEquipData = (data) => {
         if (
           !附魔数据判断 &&
           属性简写枚举[附魔属性] &&
-          !['atVitalityBase', 'atDecriticalDamageBase', 'atToughnessBase'].includes(附魔属性)
+          !['atDecriticalDamageBase', 'atToughnessBase'].includes(附魔属性)
         ) {
           console.warn(`存在计算器未内置附魔${附魔属性}${附魔值}，已跳过。不影响导入。`)
         }

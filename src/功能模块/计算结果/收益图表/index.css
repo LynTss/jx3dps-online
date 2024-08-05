@@ -1,6 +1,26 @@
-.income-chart {
+.income-wrap {
   width: 100%;
   height: calc(100vh - 350px);
+  position: relative;
+}
+
+.income-custom,.income-chart {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100%;
+  height: calc(100vh - 350px);
+}
+
+.income-custom {
+  z-index: 1;
+}
+
+.income-chart {
+  z-index: 0
 }
 
 .income-chart-tooltip .ant-tooltip-inner {

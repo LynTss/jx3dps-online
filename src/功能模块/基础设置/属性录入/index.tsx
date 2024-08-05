@@ -4,7 +4,7 @@ import { 获取页面参数 } from '@/工具函数/help'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { 切换配装器弹窗显示状态, 更新当前引导步骤 } from '@/store/system'
 
-import 识别装备对比弹窗 from './识别装备对比'
+import 装备助手弹窗 from './装备助手'
 import 配装器 from './配装器'
 
 import './index.css'
@@ -18,7 +18,7 @@ function 属性录入() {
     dispatch(切换配装器弹窗显示状态(e))
   }
 
-  const [识别装备对比, 设置识别装备对比] = useState<boolean>(false)
+  const [装备助手, 设置装备助手] = useState<boolean>(false)
 
   const urlServer = 获取页面参数('server')
   const urlName = 获取页面参数('name')
@@ -54,10 +54,10 @@ function 属性录入() {
         <Button
           className={'character-set-in-btn'}
           onClick={() => {
-            设置识别装备对比(true)
+            设置装备助手(true)
           }}
         >
-          识别装备对比
+          装备助手
         </Button>
       </Badge>
       <配装器
@@ -66,7 +66,7 @@ function 属性录入() {
           修改显示状态(false)
         }}
       />
-      <识别装备对比弹窗 open={识别装备对比} onCancel={() => 设置识别装备对比(false)} />
+      <装备助手弹窗 open={装备助手} onCancel={() => 设置装备助手(false)} />
     </div>
   )
 }

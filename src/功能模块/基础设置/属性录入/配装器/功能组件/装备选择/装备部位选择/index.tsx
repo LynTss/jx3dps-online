@@ -121,7 +121,7 @@ function 装备部位选择(props: 装备部位选择入参, ref) {
         filterOption={(input, option) => {
           const findObj = 装备数据列表?.find((item) => item.id === option?.value)
           if (findObj) {
-            const filterStr = `${findObj.装备名称}${getZhuangbeiZengyiMiaoshu(findObj).join('')}${
+            const filterStr = `${findObj.装备名称}${获取装备数据描述(findObj).join('')}${
               findObj.装备品级
             }`
             return filterStr.includes(input.toLowerCase())
@@ -151,7 +151,7 @@ function 装备部位选择(props: 装备部位选择入参, ref) {
                 </span>
                 <span className={'zhuangbei-select-shuoming'}>
                   {`(`}
-                  {(getZhuangbeiZengyiMiaoshu(item) || []).map((a) => {
+                  {(获取装备数据描述(item) || []).map((a) => {
                     const 装备描述文本样式 = classnames(
                       'zhuangbei-miaoshu-label',
                       a === '精简' || a === '特效' ? 'zhuangbei-miaoshu-label-jingjian' : '',
@@ -190,17 +190,19 @@ function 装备部位选择(props: 装备部位选择入参, ref) {
 
 export default forwardRef(装备部位选择)
 
-export const getZhuangbeiZengyiMiaoshu = (data: 装备属性信息模型) => {
+export const 获取装备数据描述 = (data: 装备属性信息模型, 携带描述 = true) => {
   const { 装备增益, 装备类型 } = data
   const strList: string[] = []
-  if ([装备类型枚举.特效武器].includes(装备类型)) {
-    strList.push('特效')
-  }
-  if ([装备类型枚举.PVX].includes(装备类型)) {
-    strList.push('PVX')
-  }
-  if ([装备类型枚举.副本精简, 装备类型枚举.试炼精简].includes(装备类型)) {
-    strList.push('精简')
+  if (携带描述) {
+    if ([装备类型枚举.特效武器].includes(装备类型)) {
+      strList.push('特效')
+    }
+    if ([装备类型枚举.PVX].includes(装备类型)) {
+      strList.push('PVX')
+    }
+    if ([装备类型枚举.副本精简, 装备类型枚举.试炼精简].includes(装备类型)) {
+      strList.push('精简')
+    }
   }
   装备增益.forEach((item) => {
     switch (item.属性) {

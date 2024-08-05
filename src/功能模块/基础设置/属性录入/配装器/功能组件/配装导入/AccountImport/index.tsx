@@ -56,7 +56,7 @@ function AccountImport({ onOk }) {
         })?.then((res) => res?.data)
         const 校验 = 校验门派(userInfo?.forceName)
         if (!校验) {
-          message.warning(`当前心法由于推烂查不到心法名称可能不匹配，导入时请注意`)
+          message.warning(`当前心法由于查不到心法名称可能不匹配，导入时请注意`)
         }
       }
       console.log('userInfo?.roleId', userInfo?.roleId)

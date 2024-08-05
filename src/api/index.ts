@@ -25,7 +25,15 @@ const jx3AppApi = axios.create({
 })
 
 const yeApi = axios.create({
-  baseURL: 'https://inv.btcsg.top:3001', // 设置 baseURL 为您的服务器地址
+  baseURL: 'https://jx3api.btcsg.top', // 设置 baseURL 为您的服务器地址
+  timeout: 10000, // 设置超时时间
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+
+const jxBoxApi2 = axios.create({
+  baseURL: '/nextApi/', // 设置 baseURL 为您的服务器地址
   timeout: 10000, // 设置超时时间
   headers: {
     'Content-Type': 'application/json',
@@ -51,3 +59,6 @@ export const getEquipDataByUidV2 = (params?) => dlApi.post(`/mine/equip/get-role
 export const getEquipDataByUidV3 = (params?) => jx3AppApi.post(`/mine/equip/get-role-equip`, params)
 
 export const getUIdByName = (params?) => yeApi.post(`/role/role_detailed`, null, { params: params })
+
+// 获取交易行装备价格
+export const getEquipPriceList = (params?) => jxBoxApi2.get(`/api/item-price/list`, { params })
