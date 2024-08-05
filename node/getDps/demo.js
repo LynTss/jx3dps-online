@@ -25,9 +25,15 @@ function 计算 (心法) {
   const DPS = require('../../build/static/js/getDps.js')
   // const DPS = require('./getDps.js')
   const 计算结果 = DPS?.计算秒伤?.(params)
+  const 支持循环 = DPS?.获取心法循环?.({心法:params?.心法})
   const fs = require('fs')
   // console.log(`开始写入${params?.心法}计算结果文件`)
-  fs.writeFile(`计算结果${params?.心法}.json`, JSON.stringify(计算结果), err => {
+  fs.writeFile(`node/demoRes/${params?.心法}_计算结果.json`, JSON.stringify(计算结果), err => {
+    if (err) {
+      console.log('err',err)
+    }
+  })
+  fs.writeFile(`node/demoRes/${params?.心法}_支持循环.json`, JSON.stringify(支持循环), err => {
     if (err) {
       console.log('err',err)
     }
