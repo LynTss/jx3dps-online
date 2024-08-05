@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import { Select } from 'antd'
+import { Popover, Select } from 'antd'
 import { 更新方案数据 } from '@/store/data'
 import classnames from 'classnames'
 import useCycle from '@/hooks/use-cycle'
@@ -43,10 +43,42 @@ function 循环选择() {
               )
               return (
                 <Select.Option value={item?.名称} key={item.名称} label={item.名称}>
-                  <div className='cycle-select-item'>
-                    {item.标题 || item.名称}
-                    <span className={cls}>{item.标记}</span>
-                  </div>
+                  <Popover
+                    placement='right'
+                    zIndex={2000}
+                    title='计算循环说明'
+                    open={item.提供者 ? undefined : false}
+                    content={
+                      item.提供者 ? (
+                        <div>
+                          {item.提供者 !== '模拟' ? (
+                            <p>
+                              该循环计算数据JCL由
+                              <span className='cycle-select-provider'>{item.提供者}</span>
+                              提供
+                            </p>
+                          ) : (
+                            <p>
+                              该循环计算数据由
+                              <span className='cycle-select-provider'>模拟器</span>生成
+                            </p>
+                          )}
+                        </div>
+                      ) : (
+                        <div>该循环无特殊说明</div>
+                      )
+                    }
+                  >
+                    <div className='cycle-select-item'>
+                      {item.标题 || item.名称}
+                      <div>
+                        {item.提供者 ? (
+                          <span className='cycle-select-provider'>{item.提供者}</span>
+                        ) : null}
+                        <span className={cls}>{item.标记}</span>
+                      </div>
+                    </div>
+                  </Popover>
                 </Select.Option>
               )
             })}

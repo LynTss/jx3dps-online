@@ -12,6 +12,11 @@ export interface 循环数据 {
    */
   标题?: string
   /**
+   * @name 标提供者题
+   * 循环标题，用作展示循环的来源，提供者
+   */
+  提供者?: string
+  /**
    * @name 默认隐藏
    * 是否默认隐藏，不展示在循环选择框内
    * @default false

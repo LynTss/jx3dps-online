@@ -3,13 +3,14 @@ import { useAppSelector } from '@/hooks'
 import 获取当前数据 from '@/数据/数据工具/获取当前数据'
 import { hexToRgbaToDark } from '@/工具函数/help'
 
-import 全局背景 from './背景图'
+// import 全局背景 from './背景图'
 import { 默认系统渐变色 } from './default'
 import './index.css'
 
 const 系统配置 = 获取当前数据()?.系统配置 || {}
 
-const 背景图 = (系统配置.背景图 || []).concat(全局背景)
+// const 背景图 = (系统配置.背景图 || []).concat(全局背景)
+const 背景图 = 系统配置.背景图 || []
 const 背景色渐变 = 系统配置.背景色渐变 || 默认系统渐变色(系统配置.主题色)
 
 interface LayoutProps {

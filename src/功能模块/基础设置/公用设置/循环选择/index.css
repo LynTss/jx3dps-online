@@ -4,6 +4,11 @@
   justify-content: space-between;
 }
 
+.cycle-select-provider {
+  color: rgb(0, 128, 128);
+  font-weight: 500;
+}
+
 .cycle-select-item-tag {
   color: var(--ant-error-color);
   margin-left: 8px;
