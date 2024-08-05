@@ -1,5 +1,15 @@
 export default [
   {
+    version: '[雾海寻龙] 1.1.19',
+    date: '2024-08-05 17:00:00',
+    content: [
+      '太玄经',
+      <p style={{ paddingLeft: 12 }} key='1.1.19.1'>
+        <p>应评论需求，重新添加「鬼追」循环</p>
+      </p>,
+    ],
+  },
+  {
     version: '[雾海寻龙] 1.1.18',
     date: '2024-08-01 20:00:00',
     content: [
