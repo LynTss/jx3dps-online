@@ -107,7 +107,7 @@ function 配装器(props: ModalProps) {
   return (
     <Modal
       maskClosable={false}
-      keyboard={false}
+      // keyboard={false}
       closable={![1, 2, 3, 4, 5]?.includes(当前引导步骤) || !新手引导流程状态}
       title={
         <头部组件

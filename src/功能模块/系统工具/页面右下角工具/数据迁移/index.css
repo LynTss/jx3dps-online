@@ -1,0 +1,9 @@
+.copy-data-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.copy-data-wrap .ant-btn {
+  width: 49%;
+}

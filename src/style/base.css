@@ -120,3 +120,11 @@ ul {
   margin-bottom: 20px;
   background: #fff;
 }
+
+.dps-up-color {
+  color: hsl(140, 60%, 40%);
+}
+
+.dps-low-color {
+  color: #ff4d4f;
+}

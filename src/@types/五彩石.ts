@@ -11,8 +11,8 @@ export interface 五彩石数据类型 {
   }>
   DiamondCount1: string | number // 条件1达成 全身的(五行石)大于等于
   DiamondCount2: string | number // 条件2达成 全身的(五行石)大于等于
-  DiamondCount3: string | number // 条件3达成 全身的(五行石)大于等于
+  DiamondCount3?: string | number // 条件3达成 全身的(五行石)大于等于
   DiamondIntensity1: string | number // 条件1达成 (五行石)等级和大于等于90级
   DiamondIntensity2: string | number // 条件2达成 (五行石)等级和大于等于90级
-  DiamondIntensity3: string | number // 条件3达成 (五行石)等级和大于等于90级
+  DiamondIntensity3?: string | number // 条件3达成 (五行石)等级和大于等于90级
 }

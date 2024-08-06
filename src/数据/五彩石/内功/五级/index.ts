@@ -1,4 +1,6 @@
 import { 五彩石数据类型 } from '@/@types/五彩石'
+import { 属性类型 } from '@/@types/属性'
+import { 五彩石增益类型枚举 } from '@/@types/枚举'
 
 const 五彩石_五级: 五彩石数据类型[] = [
   {
@@ -616,6 +618,30 @@ const 五彩石_五级: 五彩石数据类型[] = [
     DiamondIntensity1: '50',
     DiamondIntensity2: '90',
     DiamondIntensity3: '108',
+  },
+  {
+    五彩石名称: '彩·击破·强击·固筋(伍)',
+    五彩石等级: 6,
+    装备增益: [
+      { 增益数值: 975, 增益名称: 五彩石增益类型枚举.会心等级, 增益类型: 属性类型.全会心等级 },
+      { 增益数值: 71, 增益名称: 五彩石增益类型枚举.根骨百分比, 增益类型: 属性类型.郭氏根骨 },
+    ],
+    DiamondCount1: '14',
+    DiamondCount2: '16',
+    DiamondIntensity1: '75',
+    DiamondIntensity2: '90',
+  },
+  {
+    五彩石名称: '彩·击破·强击·聚神(伍)',
+    五彩石等级: 6,
+    装备增益: [
+      { 增益数值: 975, 增益名称: 五彩石增益类型枚举.会心等级, 增益类型: 属性类型.全会心等级 },
+      { 增益数值: 71, 增益名称: 五彩石增益类型枚举.元气百分比, 增益类型: 属性类型.郭氏元气 },
+    ],
+    DiamondCount1: '14',
+    DiamondCount2: '16',
+    DiamondIntensity1: '75',
+    DiamondIntensity2: '90',
   },
 ]
 

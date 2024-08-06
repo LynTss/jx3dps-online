@@ -189,6 +189,26 @@ export interface 装备增益类型 {
    * @name 装备大附魔_伤鞋
    */
   大附魔_伤鞋?: boolean
+  /**
+   * @name 郭氏力道
+   * @description 五彩石/装备携带的郭氏值
+   */
+  郭氏力道?: number
+  /**
+   * @name 郭氏身法
+   * @description 五彩石/装备携带的郭氏值
+   */
+  郭氏身法?: number
+  /**
+   * @name 郭氏元气
+   * @description 五彩石/装备携带的郭氏值
+   */
+  郭氏元气?: number
+  /**
+   * @name 郭氏根骨
+   * @description 五彩石/装备携带的郭氏值
+   */
+  郭氏根骨?: number
 }
 
 /**
