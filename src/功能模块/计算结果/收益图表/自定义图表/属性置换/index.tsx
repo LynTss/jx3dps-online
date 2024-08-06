@@ -312,6 +312,7 @@ export const 附魔属性置换收益信息 = [
         <p>
           <CrownFilled className='attr-repace-icon' />： 同行内提升最高的数值
         </p>
+        <p>表格数值不共轭的原因为：计算采用游戏内的郭氏算法进行计算，各属性存在计算阈值。</p>
       </div>
     ),
   },
