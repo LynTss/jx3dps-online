@@ -17,7 +17,7 @@ function 秒伤结果对比({ 更换装备后秒伤 }) {
           {更换装备后秒伤}
         </p>
         <p className={`dps-diff-dps ${bool ? 'dps-diff-up' : 'dps-diff-down'}`}>
-          {百分比变化率}%
+          {bool ? '+' : ''}{百分比变化率}%
         </p>
       </div>
     </div>
