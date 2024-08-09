@@ -1,5 +1,15 @@
 export default [
   {
+    version: '[雾海寻龙] 1.1.21',
+    date: '2024-08-09 17:30:00',
+    content: [
+      '综合-Bug',
+      <p style={{ paddingLeft: 12 }} key='1.1.21.1'>
+        <p>修复无封对比中对比时未计算附魔的Bug</p>
+      </p>,
+    ],
+  },
+  {
     version: '[雾海寻龙] 1.1.20',
     date: '2024-08-06 17:30:00',
     content: [
